@@ -1,0 +1,18 @@
+type Query {
+    fundingRequestWithInvestors(id: ID!): FundingRequestView!
+}
+
+type FundingRequestView {
+    requestId: ID!
+    title: String!
+    currentFunded: Float!
+    requiredAmount: Float!
+    funderName: String!
+    investors: [InvestorShare!]!
+}
+
+type InvestorShare {
+    name: String!
+    amount: Float!
+    sharePercent: Float!
+}
