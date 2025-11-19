@@ -4,38 +4,38 @@ import com.razz.orderservice.dto.PlaceOrderRequest;
 import com.razz.orderservice.model.write.Order;
 import com.razz.orderservice.repository.OrderRepository;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Mono;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 public class OrderCommandService {
     private final OrderRepository repo;
     public OrderCommandService(OrderRepository repo) { this.repo = repo; }
 
-    public Mono<String> place(PlaceOrderRequest cmd) {
+    public String place(PlaceOrderRequest cmd) {
         Order order = new Order(cmd.productId(), cmd.quantity(), cmd.funderId(), cmd.supplierId(), cmd.requestId());
-        order.setUnitPrice(100.0); // Mock price
+        order.setUnitPrice(100.0);
         order.setTotalAmount(order.getQuantity() * order.getUnitPrice());
-        return repo.save(order).map(Order::getId);
+        return repo.save(order).getId();
     }
 
-    public Mono<String> updateStatus(String id, String status) {
-        return repo.findById(id)
-                .doOnNext(o -> {
-                    o.setStatus(status);
-                    if ("DELIVERED".equals(status)) o.setDeliveredAt(LocalDateTime.now());
-                })
-                .flatMap(repo::save)
-                .map(Order::getStatus);
+    public String updateStatus(String id, String status) {
+        Optional<Order> opt = repo.findById(id);
+        if (opt.isEmpty()) throw new RuntimeException("Order not found: " + id);
+        Order o = opt.get();
+        o.setStatus(status);
+        if ("DELIVERED".equals(status)) o.setDeliveredAt(LocalDateTime.now());
+        repo.save(o);
+        return o.getStatus();
     }
 
-    public Mono<Void> pay(String id) {
-        return repo.findById(id)
-                .doOnNext(o -> {
-                    o.setSupplierPaid(true);
-                    o.setPaidAt(LocalDateTime.now());
-                })
-                .flatMap(repo::save)
-                .then();
+    public boolean pay(String id) {
+        Optional<Order> opt = repo.findById(id);
+        if (opt.isEmpty()) throw new RuntimeException("Order not found: " + id);
+        Order o = opt.get();
+        o.setSupplierPaid(true);
+        o.setPaidAt(LocalDateTime.now());
+        repo.save(o);
+        return true;
     }
 }

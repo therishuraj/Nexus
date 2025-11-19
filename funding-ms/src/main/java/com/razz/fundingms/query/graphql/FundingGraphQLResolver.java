@@ -5,8 +5,6 @@ import com.razz.fundingms.query.service.FundingQueryService;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Component;
-import reactor.core.publisher.Mono;
 
 @Controller
 public class FundingGraphQLResolver {
@@ -18,7 +16,7 @@ public class FundingGraphQLResolver {
     }
 
     @QueryMapping
-    public Mono<FundingRequestView> fundingRequestWithInvestors(@Argument String id) {
+    public FundingRequestView fundingRequestWithInvestors(@Argument String id) {
         return service.getById(id);
     }
 }

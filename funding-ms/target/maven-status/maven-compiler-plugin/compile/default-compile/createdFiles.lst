@@ -1,4 +1,5 @@
 com/razz/fundingms/model/write/FundingRequest.class
+com/razz/fundingms/config/MongoConfig.class
 com/razz/fundingms/command/dto/FundingResponse.class
 com/razz/fundingms/query/service/FundingQueryService.class
 com/razz/fundingms/model/read/FundingRequestView$InvestorShare.class
