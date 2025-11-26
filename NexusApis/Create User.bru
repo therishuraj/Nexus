@@ -1,0 +1,29 @@
+meta {
+  name: Create User
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{app_url}}/nexus/api/v1/user
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "name": "Funder",
+    "email": "funder@gmail.com",
+    "password": "funder",
+    "roles": ["FUNDER"]
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,6 +1,7 @@
 package com.razz.orderservice.client;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
+import com.razz.orderservice.dto.UserBatchRequest;
+import com.razz.orderservice.dto.UserEmailResponse;
 import com.razz.orderservice.dto.UserUpdateRequest;
 
 @Component
@@ -78,6 +81,61 @@ public class UserServiceClient {
             
         } catch (Exception e) {
             log.error("Error calling user-service - UserId: {}, Error: {}", userId, e.getMessage());
+            throw new RuntimeException("Error calling user-service: " + e.getMessage(), e);
+        }
+    }
+    
+    public List<UserEmailResponse> getUserEmailsByIds(List<String> userIds) {
+        String url = userServiceUrl + "/api/v1/users/batch";
+        UserBatchRequest request = new UserBatchRequest(userIds);
+        
+        log.info("Calling user-service to get user emails - UserIds: {}", userIds);
+        
+        try {
+            Map<String, Object> response = webClient.post()
+                    .uri(url)
+                    .bodyValue(request)
+                    .retrieve()
+                    .bodyToMono(Map.class)
+                    .block();
+            
+            if (response == null) {
+                log.error("Received null response from user-service batch endpoint");
+                throw new RuntimeException("No response from user-service");
+            }
+            
+            // Extract data from success response
+            Object dataObj = response.get("data");
+            if (dataObj == null) {
+                log.error("No data field in user-service response: {}", response);
+                throw new RuntimeException("Invalid response format from user-service");
+            }
+            
+            // Convert data to List<UserEmailResponse>
+            List<UserEmailResponse> users = new java.util.ArrayList<>();
+            if (dataObj instanceof List) {
+                List<?> dataList = (List<?>) dataObj;
+                for (Object item : dataList) {
+                    if (item instanceof Map) {
+                        Map<String, Object> userMap = (Map<String, Object>) item;
+                        String id = (String) userMap.get("id");
+                        String email = (String) userMap.get("email");
+                        String role = (String) userMap.get("role");
+                        users.add(new UserEmailResponse(id, email, role));
+                    }
+                }
+            }
+            
+            log.info("Received user emails from user-service - Count: {}", users.size());
+            return users;
+            
+        } catch (WebClientResponseException e) {
+            log.error("Failed to get user emails - Status: {}, Error: {}", 
+                    e.getStatusCode(), e.getResponseBodyAsString());
+            throw new RuntimeException("Failed to get user emails: " + e.getResponseBodyAsString());
+            
+        } catch (Exception e) {
+            log.error("Error calling user-service for emails - Error: {}", e.getMessage());
             throw new RuntimeException("Error calling user-service: " + e.getMessage(), e);
         }
     }

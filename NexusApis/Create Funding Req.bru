@@ -1,0 +1,30 @@
+meta {
+  name: Create Funding Req
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{app_url}}/nexus/api/v1/funding-requests
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzM4NCJ9.eyJyb2xlcyI6WyJGVU5ERVIiXSwiaWQiOiI2OTIxMzNmMjIwYjNmYjJlMDRkNGYxNjAiLCJzdWIiOiJmdW5kZXJAZ21haWwuY29tIiwiaWF0IjoxNzYzNzgzNjk1LCJleHAiOjE3NjM3ODcyOTV9.iK5DXFc9uVng3_g7BLM4C0--WXhnak2CSJ4EaKGzZ1LGEfIput6bjEx8SkLi6SX_
+}
+
+body:json {
+  {
+    "title": "Funder Funds",
+    "requiredAmount": 1000.00,
+    "deadline": "2026-01-15T17:00:00",
+    "committedReturnAmount": 2000,
+    "description": "This funding request is raised to invest in domain of groceries. expected return is 2X"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,20 @@
+meta {
+  name: create product by id
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{app_url}}/nexus/api/v1/product/6920b19b516c3bab4b5bb0a8
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzM4NCJ9.eyJyb2xlcyI6WyJTVVBQTElFUiJdLCJpZCI6IjY5MjBiMGIwYWVhZTllMGYzNWMyNDEyNiIsInN1YiI6InN1cHBsaWVyMkBnbWFpbC5jb20iLCJpYXQiOjE3NjM3NTAyMTcsImV4cCI6MTc2Mzc1MzgxN30.SuBMwq8xmqoCe1obEnI4sX08DFwKVwXokiu7yqo-Cpf6VKxqNlzCH9mrf45eMDq7
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

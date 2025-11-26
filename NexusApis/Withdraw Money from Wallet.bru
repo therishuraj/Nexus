@@ -1,0 +1,28 @@
+meta {
+  name: Withdraw Money from Wallet
+  type: http
+  seq: 15
+}
+
+post {
+  url: {{app_url}}/nexus/api/v1/wallet/withdraw
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzM4NCJ9.eyJyb2xlcyI6WyJJTlZFU1RPUiJdLCJpZCI6IjY5MjBiODEwYzdkNjhhMWFlMWE0MWY3YiIsInN1YiI6IndhbGxldEBnbWFpbC5jb20iLCJpYXQiOjE3NjM3NTE5OTUsImV4cCI6MTc2Mzc1NTU5NX0.ECQqU3wgZu2QOv4fg6rc6CACJC9EAxWfH5SqlwleCqKDA99xWA0ZT5MP1b8rNxIE
+}
+
+body:json {
+  {
+    "externalUserId": "6920b810c7d68a1ae1a41f7b",
+    "amount": 1000.0,
+    "upiId": "user@upi"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

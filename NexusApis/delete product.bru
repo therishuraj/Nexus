@@ -1,0 +1,20 @@
+meta {
+  name: delete product
+  type: http
+  seq: 11
+}
+
+delete {
+  url: {{app_url}}/nexus/api/v1/product/6920b2d1516c3bab4b5bb0a9
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzM4NCJ9.eyJyb2xlcyI6WyJTVVBQTElFUiJdLCJpZCI6IjY5MjBiMGIwYWVhZTllMGYzNWMyNDEyNiIsInN1YiI6InN1cHBsaWVyMkBnbWFpbC5jb20iLCJpYXQiOjE3NjM3NTAyMTcsImV4cCI6MTc2Mzc1MzgxN30.SuBMwq8xmqoCe1obEnI4sX08DFwKVwXokiu7yqo-Cpf6VKxqNlzCH9mrf45eMDq7
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

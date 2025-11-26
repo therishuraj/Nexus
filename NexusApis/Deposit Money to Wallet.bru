@@ -1,0 +1,27 @@
+meta {
+  name: Deposit Money to Wallet
+  type: http
+  seq: 13
+}
+
+post {
+  url: {{app_url}}/nexus/api/v1/wallet/deposit
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzM4NCJ9.eyJyb2xlcyI6WyJJTlZFU1RPUiJdLCJpZCI6IjY5MjEzMzAzMjBiM2ZiMmUwNGQ0ZjE1ZiIsInN1YiI6ImludmVzdG9yQGdtYWlsLmNvbSIsImlhdCI6MTc2Mzc4NDMyNSwiZXhwIjoxNzYzNzg3OTI1fQ.DSOwfJcH_-QFHgse0CrrGXo3xT0GVD6m0qo1c71KMJogrZwrmGM2Q8JmUhUQOSXQ
+}
+
+body:json {
+  {
+    "externalUserId": "6921330320b3fb2e04d4f15f",
+    "amount": 200.0
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

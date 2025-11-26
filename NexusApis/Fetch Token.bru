@@ -1,0 +1,23 @@
+meta {
+  name: Fetch Token
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{app_url}}/nexus/auth/login
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email": "investor@gmail.com",
+    "password": "investor"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

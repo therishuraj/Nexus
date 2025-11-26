@@ -5,11 +5,20 @@ meta {
 }
 
 get {
-  url: {{base_url}}/api/v1/orders/ORDER_ID
+  url: http://localhost:3007/api/v1/orders/691f847f8f88671e530ccae8
   body: none
   auth: inherit
 }
 
+headers {
+  Accept: application/json
+}
+
+assert {
+  expect status: eq 200
+}
+
 settings {
   encodeUrl: true
+  timeout: 0
 }

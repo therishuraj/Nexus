@@ -1,0 +1,33 @@
+meta {
+  name: create product
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{app_url}}/nexus/api/v1/product
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzM4NCJ9.eyJyb2xlcyI6WyJTVVBQTElFUiJdLCJpZCI6IjY5MjBiMGIwYWVhZTllMGYzNWMyNDEyNiIsInN1YiI6InN1cHBsaWVyMkBnbWFpbC5jb20iLCJpYXQiOjE3NjM3NTAyMTcsImV4cCI6MTc2Mzc1MzgxN30.SuBMwq8xmqoCe1obEnI4sX08DFwKVwXokiu7yqo-Cpf6VKxqNlzCH9mrf45eMDq7
+}
+
+body:json {
+  {
+    "name": "man_text2",
+    "category": "Electronics1",
+    "quantity": 51,
+    "price": 999.99,
+    "tags": ["technology", "gadgets"],
+    "isShortage": false,
+    "shortageThreshold": 10,
+    "listedAt": "2025-11-18T10:00:00"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

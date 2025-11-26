@@ -1,0 +1,29 @@
+meta {
+  name: Get All Users
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{app_url}}/nexus/api/v1/users
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "name": "Ataa",
+    "email": "Ataa@gmail.com",
+    "password": "ataakhan",
+    "roles": ["FUNDER"]
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

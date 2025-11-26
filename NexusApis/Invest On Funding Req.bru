@@ -1,0 +1,26 @@
+meta {
+  name: Invest On Funding Req
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{app_url}}/nexus/api/v1/funding-requests/692134411c09ba92900d7323/investment
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzM4NCJ9.eyJyb2xlcyI6WyJJTlZFU1RPUiJdLCJpZCI6IjY5MjEzMzAzMjBiM2ZiMmUwNGQ0ZjE1ZiIsInN1YiI6ImludmVzdG9yQGdtYWlsLmNvbSIsImlhdCI6MTc2Mzc4NDMyNSwiZXhwIjoxNzYzNzg3OTI1fQ.DSOwfJcH_-QFHgse0CrrGXo3xT0GVD6m0qo1c71KMJogrZwrmGM2Q8JmUhUQOSXQ
+}
+
+body:json {
+  {
+    "walletAdjustment": -1000
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
