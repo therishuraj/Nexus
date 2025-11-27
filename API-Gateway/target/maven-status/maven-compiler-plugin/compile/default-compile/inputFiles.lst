@@ -1,0 +1,15 @@
+/Users/I528997/Desktop/BITS/Project/Nexus/API-Gateway/src/main/java/com/nexus/api_gateway/ApiGatewayApplication.java
+/Users/I528997/Desktop/BITS/Project/Nexus/API-Gateway/src/main/java/com/nexus/api_gateway/config/SecurityConfig.java
+/Users/I528997/Desktop/BITS/Project/Nexus/API-Gateway/src/main/java/com/nexus/api_gateway/config/WebClientConfig.java
+/Users/I528997/Desktop/BITS/Project/Nexus/API-Gateway/src/main/java/com/nexus/api_gateway/controller/AuthController.java
+/Users/I528997/Desktop/BITS/Project/Nexus/API-Gateway/src/main/java/com/nexus/api_gateway/dto/LoginRequest.java
+/Users/I528997/Desktop/BITS/Project/Nexus/API-Gateway/src/main/java/com/nexus/api_gateway/dto/LoginResponse.java
+/Users/I528997/Desktop/BITS/Project/Nexus/API-Gateway/src/main/java/com/nexus/api_gateway/filters/FundingRequestAuthorizationFilter.java
+/Users/I528997/Desktop/BITS/Project/Nexus/API-Gateway/src/main/java/com/nexus/api_gateway/filters/JwtAuthFilter.java
+/Users/I528997/Desktop/BITS/Project/Nexus/API-Gateway/src/main/java/com/nexus/api_gateway/filters/OrderAuthorizationFilter.java
+/Users/I528997/Desktop/BITS/Project/Nexus/API-Gateway/src/main/java/com/nexus/api_gateway/filters/ProductAuthorizationFilter.java
+/Users/I528997/Desktop/BITS/Project/Nexus/API-Gateway/src/main/java/com/nexus/api_gateway/filters/UserAuthorizationFilter.java
+/Users/I528997/Desktop/BITS/Project/Nexus/API-Gateway/src/main/java/com/nexus/api_gateway/security/JwtUtil.java
+/Users/I528997/Desktop/BITS/Project/Nexus/API-Gateway/src/main/java/com/nexus/api_gateway/service/UserServiceClient.java
+/Users/I528997/Desktop/BITS/Project/Nexus/API-Gateway/src/main/java/com/nexus/api_gateway/util/Constants.java
+/Users/I528997/Desktop/BITS/Project/Nexus/API-Gateway/src/main/java/com/nexus/api_gateway/util/UserValidationUtil.java

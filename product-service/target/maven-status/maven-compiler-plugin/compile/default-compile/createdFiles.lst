@@ -1,0 +1,7 @@
+com/nexus/product_service/controller/ProductController.class
+com/nexus/product_service/model/Product.class
+com/nexus/product_service/repository/ProductRepository.class
+com/nexus/product_service/ProductServiceApplication.class
+com/nexus/product_service/model/Product$ProductBuilder.class
+com/nexus/product_service/config/OpenAPIConfig.class
+com/nexus/product_service/service/ProductService.class
